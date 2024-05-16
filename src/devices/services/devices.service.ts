@@ -30,12 +30,13 @@ export class DevicesService {
 
   async create(device: CreateDeviceDto): Promise<number> {
     const sql = `INSERT INTO dispositivo 
-                (id_cliente, referencia, estado, 
+                (referencia, estado, 
                  password, sincronizar, fecha_hora_validacion, 
-                 codigo, grupos_id) VALUES (${device.id_cliente},
-                '${device.referencia}',${device.estado},
-                '${device.password}','${device.sincronizar}',0,
-                '${device.codigo}',${device.grupos_id})`;
+                 codigo, id_cliente, grupos_id) VALUES ('${device.referencia}', 
+                 '${device.estado}', '${device.password}', 
+                 '${device.sincronizar}', '0', '${device.codigo}',
+                 '${device.id_cliente}', '${device.grupos_id}')`;
+
     const [response] = await this.pool.query<QueryResult>(sql);
     return response['affectedRows'];
   }

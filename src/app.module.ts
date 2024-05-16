@@ -5,6 +5,8 @@ import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import { enviroments } from 'enviroments';
 import { DevicesModule } from './devices/devices.module';
+import { VideosModule } from './videos/videos.module';
+import { GroupsModule } from './groups/groups.module';
 import config from 'config';
 
 @Module({
@@ -16,6 +18,8 @@ import config from 'config';
     }),
     DatabaseModule,
     DevicesModule,
+    VideosModule,
+    GroupsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
